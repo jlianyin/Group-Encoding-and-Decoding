@@ -166,9 +166,9 @@ bool readSVs(const string& filename, T *arr, int groupSize) {
 
 int main()
 {
-	int n = 22; //the number of orders
-	int g = 8;  // group size
-	unsigned endVal = 10; //the number of tested data is endVal*endVal
+	int n = 21; //the number of orders of the input data. This value should be between 1 to 32.
+	int g = 8;  // group size. Do not change this value unless you have generated the state-views for the specific g. 
+	unsigned endVal = 10; // we simply test the first endVal*endVal input data here.This value can be changed, however, it should be less than 1<<n.
 	int dimSize=1<<g; // the dimension size in each group
 	bitmask_t hcode;  // Hilbert code
 	halfmask_t x, y;  //coordinate
@@ -190,9 +190,9 @@ int main()
 	 
 	cout<<"_________Encoding_____________"<<endl;
 	cout<<endl<<"Start test en_FVFG:"<<endl;
-	for (x = 0; x <= endVal; x++)
+	for (x = 0; x < endVal; x++)
 	{
-		for(y=0;y<=endVal;y++)
+		for(y=0;y< endVal;y++)
 		{
 			hcode= en_FVFG(x, y, n,g);  
 			cout<<"The Hilbert code of coordinate ("<<x<<","<<y<<") is: "<<hcode<< endl;
@@ -209,9 +209,9 @@ int main()
 	dimSize=1<<g;	
 	startPos=groupNum*g-1; 
 	
-	for (x = 0; x <= endVal; x++)
+	for (x = 0; x < endVal; x++)
 	{
-		for(y=0;y<=endVal;y++)
+		for(y=0;y< endVal;y++)
 		{
 			hcode= en_FVFG_batch(x, y, n, g, groupNum, dimSize,startPos, state);  
 			cout<<"The Hilbert code of coordinate ("<< x <<","<< y <<") is: "<<hcode<< endl;
@@ -219,7 +219,7 @@ int main()
 	}  
 	
 	cout<<endl<<"Starting test de_FVFG:"<<endl;
-	for (hcode = 0; hcode <= endVal*endVal; hcode++)
+	for (hcode = 0; hcode <endVal*endVal; hcode++)
 	{
 		x =0;
 		y =0;					
@@ -237,7 +237,7 @@ int main()
 	state = reminder && (g-reminder)%2 ? 1 : 0;	 //computing the state for the first group
 	dimSize=1<<g; 
 	startPos=2*groupNum*g-1;
-	for (hcode = 0; hcode <= endVal*endVal; hcode++)
+	for (hcode = 0; hcode < endVal*endVal; hcode++)
 	{
 		x =0;
 		y =0;					
