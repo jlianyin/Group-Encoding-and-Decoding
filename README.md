@@ -1,4 +1,4 @@
-# Group-Encoding-and-Decoding
+# Hilbert-Group-Encoding-and-Decoding
 This implementation is based on the work of Lianyin Jia, et al., "Efficient Group based Hilbert Encoding and Decoding Algorithms" 
 
 This repositary contains four files:CHM_8.bin, CSM_8.bin,HCM_8.bin and HSM_8.bin, corresponding to four procomputed 8-order state-views, namely CHM, CSM, HCM and HSM. 
